@@ -15,3 +15,8 @@ This repository contains the libraries and build steps required due to the JCent
 1. Clone `git@github.com:GradleUp/shadow.git`
 1. Copy source at tag: 2.0.4, commit: 477db403 to projects folder.
 1. Switch to Java 8. Sample: `export JAVA_HOME="/Users/dhuff/Library/Java/JavaVirtualMachines/corretto-1.8.0_422/Contents/Home"`
+
+## org.asciidoctor:asciidoctorj-groovy-dsl:1.0.0.preview2
+1. Clone `git@github.com:asciidoctor/asciidoctorj-groovy-dsl.git`
+1. Copy source at tag: 1.0.0.preview2, commit: b18abb1 to projects folder.
+1. `./gradlew tasks assemble`
