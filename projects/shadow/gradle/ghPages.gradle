@@ -1,0 +1,19 @@
+apply plugin: "org.ajoberstar.github-pages"
+
+githubPages {
+    repoUri = 'https://github.com/johnrengelman/shadow.git'
+    credentials {
+        username = project.hasProperty('githubToken') ? project.githubToken : ''
+        password = ''
+    }
+
+    pages {
+        from 'build/asciidoc/html5'
+        into('api') {
+            from project.tasks.groovydoc
+        }
+    }
+}
+
+publishGhPages.dependsOn asciidoctor
+publishGhPages.dependsOn groovydoc
