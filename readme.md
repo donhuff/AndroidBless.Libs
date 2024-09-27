@@ -6,3 +6,7 @@ This repository contains the libraries and build steps required due to the JCent
 1. Set JAVA_HOME to JDK 11. My local example: `export JAVA_HOME="/Users/dhuff/Library/Java/JavaVirtualMachines/corretto-11.0.24/Contents/Home"`
 1. `./gradlew build`
 1. Copy ./[core|zbar|xzing]/build/outputs/aar/[core|zbar|xzing]-release.aar to common libs location.
+
+# com.github.Kotlin.anko:sdk21:v0.10.8
+1. Clone `git@github.com:Kotlin/anko.git`
+1. Copy source at tag: v0.10.8, commit: e12c5cb to projects folder.
