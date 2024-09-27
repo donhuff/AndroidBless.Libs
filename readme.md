@@ -10,3 +10,8 @@ This repository contains the libraries and build steps required due to the JCent
 # com.github.Kotlin.anko:sdk21:v0.10.8
 1. Clone `git@github.com:Kotlin/anko.git`
 1. Copy source at tag: v0.10.8, commit: e12c5cb to projects folder.
+
+## com.github.jengelman.gradle.plugins:shadow:2.0.4
+1. Clone `git@github.com:GradleUp/shadow.git`
+1. Copy source at tag: 2.0.4, commit: 477db403 to projects folder.
+1. Switch to Java 8. Sample: `export JAVA_HOME="/Users/dhuff/Library/Java/JavaVirtualMachines/corretto-1.8.0_422/Contents/Home"`
