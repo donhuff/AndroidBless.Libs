@@ -1,0 +1,98 @@
+buildscript {
+    repositories {
+        jcenter()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.0'
+        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.5.4"
+        classpath "com.gradle.publish:plugin-publish-plugin:0.9.7"
+        classpath 'org.asciidoctor:asciidoctor-gradle-plugin:1.5.3'
+        classpath 'org.asciidoctor:asciidoctorj-pdf:1.5.0-alpha.11'
+        classpath 'org.asciidoctor:asciidoctorj-groovy-dsl:1.0.0.preview2'
+        classpath "com.bluepapa32:gradle-watch-plugin:0.1.5"
+        classpath "org.kordamp.gradle:livereload-gradle-plugin:0.2.1"
+        classpath 'org.ajoberstar:gradle-git:1.5.0'
+    }
+}
+
+plugins {
+    id 'com.gradle.build-scan' version '1.10.1'
+    id 'groovy'
+    id 'project-report'
+    id 'idea'
+    id 'java-gradle-plugin'
+}
+
+// Remove the gradleApi so it isn't merged into the jar file.
+configurations.compile.dependencies.remove dependencies.gradleApi()
+
+gradlePlugin {
+    automatedPublishing = false
+}
+
+apply plugin: 'com.github.johnrengelman.plugin-shadow'
+
+buildScan {
+    licenseAgreementUrl = 'https://gradle.com/terms-of-service'
+    licenseAgree = 'yes'
+    if (System.env.CI == 'true') {
+        tag 'CI'
+        if (System.env.CIRCLE_TAG) {
+            link 'VCS', "https://github.com/johnrengelman/shadow/tree/${System.env.CIRCLE_TAG}"
+        } else {
+            link 'VCS', "https://github.com/johnrengelman/shadow/tree/${System.env.CIRCLE_BRANCH}"
+        }
+        link 'VCS Commit', "https://github.com/johnrengelman/shadow/commit/${System.env.CIRCLE_SHA1}"
+        if (System.env.CI_PULL_REQUEST) {
+            link 'Pull Request', "${System.env.CI_PULL_REQUEST}"
+        }
+    }
+}
+
+apply from: file('gradle/docs.gradle')
+apply from: file('gradle/publish.gradle')
+apply from: file('gradle/asciidoc.gradle')
+apply from: file('gradle/ghPages.gradle')
+apply from: file('gradle/dependencies.gradle')
+
+repositories {
+    jcenter()
+}
+
+test {
+    if (System.env.CI == 'true') {
+        testLogging.showStandardStreams = true
+        minHeapSize "1g"
+        maxHeapSize "1g"
+    }
+}
+
+jar {
+    from rootProject.file('LICENSE')
+    from rootProject.file('NOTICE')
+}
+
+jar.enabled = false
+
+shadowJar {
+    classifier = ''
+}
+
+idea {
+    project {
+        languageLevel = '1.7'
+    }
+}
+
+sourceCompatibility = '1.7'
+targetCompatibility = '1.7'
+
+task downloadDependencies(type: Exec) {
+    dependsOn configurations.testRuntime
+    commandLine 'echo', 'Downloaded all dependencies'
+}
+
+tasks.build.dependsOn tasks.shadowJar
