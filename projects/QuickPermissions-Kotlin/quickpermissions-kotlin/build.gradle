@@ -30,7 +30,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation files('../../../libs/com.github.Kotlin.anko-v0.10.8/anko-commons-release.aar')
+    implementation files('../libs/anko-commons-release.aar')
 }
 repositories {
     mavenCentral()

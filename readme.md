@@ -28,5 +28,20 @@ This repository contains the libraries and build steps required due to the JCent
 These steps are performed to build `shadow`.
 1. Clone `git@github.com:asciidoctor/asciidoctorj-groovy-dsl.git`
 1. Copy source at tag: 1.0.0.preview2, commit: b18abb1 to projects folder.
-1. `./gradlew tasks assemble`
+1. `./gradlew assemble`
 1. Copy ./build/libs/asciidoctorj-groovy-dsl.jar
+
+# QuickPermissions-Kotlin:0.4.1
+1. Clone `git@github.com:QuickPermissions/QuickPermissions-Kotlin.git`
+1. Copy source at tag: 0.4.1, commit: 98e176a to projects folder `projects/QuickPermissions-Kotlin`.
+1. Build com.github.Kotlin.anko:commons:v0.10.5 to populate `projects/QuickPermissions-Kotlin/libs` folder.
+1. `./gradlew quickpermissions-kotlin:assemble` Note: Do not need to build the `app` project
+1. Copy `projects/QuickPermissions-Kotlin/quickpermissions-kotlin/build/outputs/aar/quickpermissions-kotlin-release.aar` to `libs/QuickPermissions-Kotlin-0.4.1` folder.
+
+## com.github.Kotlin.anko:commons:v0.10.5
+Anko-commons:v0.10.5 is required by QuickPermissions. Anko-commons:v0.10.8 does _not_ work here.
+
+1. Clone `git@github.com:Kotlin/anko.git`
+1. Copy source at tag: v0.10.5, commit: 0f99e9f to projects folder `projects/anko-0.10.5`.
+1. `./gradlew :generated:anko-commons:build`
+1. Copy `projects/anko-0.10.5/anko/library/generated/commons/build/outputs/aar/anko-commons-release.aar` to `projects/QuickPermissions-Kotlin/libs` folder

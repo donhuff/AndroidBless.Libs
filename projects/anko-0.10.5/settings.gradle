@@ -1,6 +1,5 @@
 include ':generator'
 include ':stubs'
-include ':robolectricTests'
 include ':testUtils'
 
 include ':static:commons'
@@ -58,7 +57,6 @@ include ':ide:idea-runner'
 
 project(':generator').projectDir = new File(rootDir, 'anko/library/generator')
 project(':stubs').projectDir = new File(rootDir, 'anko/library/stubs')
-project(':robolectricTests').projectDir = new File(rootDir, 'anko/library/robolectricTests')
 project(':testUtils').projectDir = new File(rootDir, 'anko/library/testUtils')
 
 project(':static').projectDir = new File(rootDir, 'anko/library/static')

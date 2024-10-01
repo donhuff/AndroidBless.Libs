@@ -4,7 +4,7 @@ import java.util.zip.ZipOutputStream
 buildscript {
     ext.kotlin_version = '1.1.0'
     ext.kotlinx_dom_version = '0.0.10'
-    ext.kotlinx_coroutines_version = '0.15'
+    ext.kotlinx_coroutines_version = '0.19'
 
     ext.ANKO_VERSION = '0.10.5'
     ext.ANKO_VERSION_CODE = 104
@@ -29,19 +29,20 @@ buildscript {
 
     ext.POM_ARTIFACT_GROUP = 'org.jetbrains.anko'
 
-    repositories {
-        mavenCentral()
-        jcenter()
-        maven { url "http://dl.bintray.com/kotlin/kotlin-eap-1.1" }
-    }
-
-    dependencies {
-        classpath "com.android.tools.build:gradle:2.1.0"
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.3'
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7'
-        classpath "org.jetbrains.dokka:dokka-android-gradle-plugin:0.9.11"
-    }
+     repositories {
+         mavenCentral()
+         maven { url "http://dl.bintray.com/kotlin/kotlin-eap-1.1" }
+         maven { url "https://plugins.gradle.org/m2/" }
+         maven { url "https://nexus.web.cern.ch/nexus/content/repositories/public/" }
+     }
+ 
+     dependencies {
+         classpath "com.android.tools.build:gradle:2.1.0"
+         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+         classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.3'
+         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7'
+         classpath "org.jetbrains.dokka:dokka-android-gradle-plugin:0.9.16"
+     }
 }
 
 allprojects {
