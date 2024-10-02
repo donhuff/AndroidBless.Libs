@@ -11,10 +11,15 @@ This repository contains the libraries and build steps required due to the JCent
 1. Clone `git@github.com:Kotlin/anko.git`
 1. Copy source at tag: v0.10.8, commit: e12c5cb to projects folder.
 1. Perform shadow build.
-1. `./gradlew :generated:anko-sdk21:build`
-1. Copy `anko/library/generated/sdk21/build/outputs/aar/anko-sdk21-release.aar` to `libs/com.github.Kotlin.anko/sdk21/v0.10.8`
-1. `./gradlew :generated:anko-commons:build`
-1. Copy `anko/library/generated/commons/build/outputs/aar/anko-commons-release.aar` to `libs/com.github.Kotlin.anko-v0.10.8`
+1. Build:
+  1. `./gradlew :generated:anko-sdk21:build`
+  1. `./gradlew :generated:anko-commons:build`
+  1. `./gradlew generated:anko-appcompat-v7:build`
+  1. `./gradlew generated:anko-support-v4:build`
+  1. ./gradlew generated:anko-support-v4-commons:build
+1. Copy `anko/library/generated/{library}/build/outputs/aar/anko-{library}-release.aar` to `libs/com.github.Kotlin.anko/v0.10.8`
+
+1. Build: `./gradlew generated:anko:buildNeeded`
 
 ## com.github.jengelman.gradle.plugins:shadow:2.0.4
 1. Clone `git@github.com:GradleUp/shadow.git`
@@ -43,5 +48,6 @@ Anko-commons:v0.10.5 is required by QuickPermissions. Anko-commons:v0.10.8 does 
 
 1. Clone `git@github.com:Kotlin/anko.git`
 1. Copy source at tag: v0.10.5, commit: 0f99e9f to projects folder `projects/anko-0.10.5`.
+1. Set `sdk.dir=/{your path}/Library/Android/sdk` in `projects/anko-0.10.5/local.properties'.
 1. `./gradlew :generated:anko-commons:build`
 1. Copy `projects/anko-0.10.5/anko/library/generated/commons/build/outputs/aar/anko-commons-release.aar` to `projects/QuickPermissions-Kotlin/libs` folder
