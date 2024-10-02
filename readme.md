@@ -51,3 +51,22 @@ Anko-commons:v0.10.5 is required by QuickPermissions. Anko-commons:v0.10.8 does 
 1. Set `sdk.dir=/{your path}/Library/Android/sdk` in `projects/anko-0.10.5/local.properties'.
 1. `./gradlew :generated:anko-commons:build`
 1. Copy `projects/anko-0.10.5/anko/library/generated/commons/build/outputs/aar/anko-commons-release.aar` to `projects/QuickPermissions-Kotlin/libs` folder
+
+# Koin 2.0.1
+1. Clone `git@github.com:InsertKoinIO/koin.git`
+1. Copy source at tag: 2.0.1, commit: 12e06086 to projects folder `projects/koin`.
+1. `cd projects/koin/koin-projects`
+1. Builds:
+    1. `./gradlew koin-android:bundleReleaseAar`
+    1. `./gradlew koin-android-scope:bundleReleaseAar`
+    1. `./gradlew koin-android-viewmodel:bundleReleaseAar`
+    1. `./gradlew koin-androidx-viewmodel:bundleReleaseAar`
+    1. `./gradlew koin-core:assemble`
+1. Copy built aar and jar files to `libs/koin/2.0.1` folder.
+    1. koin-android-release.aar
+    1. koin-android-scope-release.aar
+    1. koin-android-viewmodel-release.aar
+    1. koin-androidx-viewmodel-release.aar
+    1. koin-core-2.0.1-javadoc.jar
+    1. koin-core-2.0.1-sources.jar
+    1. koin-core-2.0.1.jar
